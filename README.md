@@ -1,6 +1,8 @@
-# Automatic CLI Gif recorder
+# Automatic CLI replayer/GIF recorder/demo tool
 
-This repo is a combination of tools to make it easy to record gifs of your terminal from automated scripts.
+This repo is a combination of tools to make it easy to replay CLI commands and record CLI gifs from your terminal.
+
+Never again fat finger a command in a live demo and have to retype it!
 
 Never again record a bunch of helpful commands, only to realize you forgot to record something in the middle, or that you made a typo somewhere and then have to painstakingly re-record everything!
 
@@ -10,7 +12,6 @@ Prereqs:
 - [`ttyrec`]() - a terminal recorder
 - [`ttygif`]() - a terminal to gif converter
 
-
 `just`, `ttyrec`, and `ttygif` are all available via homebrew on macos, install with:
 
 ```sh
@@ -18,6 +19,10 @@ $ brew install just ttyrec ttygif
 ```
 
 *Note: `just` is not strictly required. It's a task runner and you can run the commands directly if necessary.*
+
+## How to use this repo?
+
+This is meant to be a boilerplate project that you fork and maintain for your own purposes. It can be a source of documentation, tests, and examples for your CLI tools.
 
 ## Installation
 
@@ -37,15 +42,36 @@ $ just init
 
 2) Add scripts to the `scripts/` directory
 
-3) Record!
+3) Play!
+
+Use `just run` to run a script without recording it. This is useful for live demos where you want to guarantee that the script will run without errors.
+
+For example:
 
 ```sh
-$ just record
+$ just run scripts/hello-world.sh
 ```
 
-4) View your recordings in the `recordings/` directory
+4) Record!
+
+Use just record to run a script, record it, then convert it into a GIF.
+
+```sh
+$ just record scripts/hello-world.sh
+```
+
+5) View your recordings in the `recordings/` directory
 
 ![Recording of echo "Hello, World!"](recordings/hello-world.sh.gif "Recording of echo 'Hello, World!'")
+
+
+## Recording everything at once.
+
+If your primary motivation is recording CLI animations, you can use `just record-all` to record all scripts in the `scripts/` directory.
+
+```sh
+$ just record-all
+```
 
 ## Customization
 
@@ -60,6 +86,7 @@ Run `just debug` to see your commands execute without being recorded or turned i
 ```sh
 $ just debug scripts/hello-world.sh
 ```
+
 
 ## FAQ
 

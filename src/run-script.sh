@@ -37,7 +37,7 @@ if [ $DEBUG ]; then
   unset TYPE_SPEED
 fi
 
-. $SELF/../$FILE
+. "$SELF/../$FILE"
 
 . $SELF/SCRIPT_TEARDOWN.sh
 
